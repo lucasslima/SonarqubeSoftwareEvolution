@@ -57,9 +57,9 @@ for line in git_log_result.decode('utf-8').split('\n'):
             if skip_tag:
               continue
             last_tag = tag_number
-            print(tag)
+            #print(tag)
             # checkout into each of them
-            #subprocess.call(["git", "checkout" , tag])
+            subprocess.call(["git", "checkout" , tag])
     
             # create directory to place all the tags
             #folder_path = "../"+ project_name +"_tags/"+str(counter)+"."+tag
@@ -96,6 +96,7 @@ for line in git_log_result.decode('utf-8').split('\n'):
             f.write("sonar.projectVersion=" +tag+ "\n")
             f.write("# Comma-separated paths to directories with sources (required)\n")
             f.write("sonar.sources=. \n")
+            f.write("sonar.exclusions=sequential_tag_walker.py\n"
 
             # f.write("sonar.tests=" +project_name+ "\n")
             f.write("# Language\n")
